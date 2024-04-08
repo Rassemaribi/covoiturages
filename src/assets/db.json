@@ -1,0 +1,55 @@
+{
+  "annoncesCovoiturage": [
+    {
+      "id": "1",
+      "depart": "Paris",
+      "destination": "Marseille",
+      "date": "2024-04-15",
+      "heureDepart": "08:00",
+      "placesDisponibles": 3,
+      "conducteur": {
+        "nom": "Jean Dupont",
+        "telephone": "+33 6 12 34 56 78",
+        "vehicule": "Renault Clio"
+      },
+      "passagers": [
+        {
+          "nom": "Marie Martin",
+          "telephone": "+33 6 98 76 54 32"
+        },
+        {
+          "nom": "Pierre Durand",
+          "telephone": "+33 6 54 32 10 98"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "depart": "Lyon",
+      "destination": "Bordeaux",
+      "date": "2024-04-20",
+      "heureDepart": "10:30",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "Sophie Leclerc",
+        "telephone": "+33 6 23 45 67 89",
+        "vehicule": "Peugeot 308"
+      },
+      "passagers": []
+    },
+    {
+      "id": 0,
+      "depart": "sfax",
+      "destination": "jerba",
+      "date": "2024-04-09",
+      "heureDepart": "16:20",
+      "placesDisponibles": 3,
+      "conducteur": {
+        "nom": "RACEM ARIBI",
+        "telephone": "26091862",
+        "vehicule": "clio"
+      },
+      "passagers": []
+    }
+  ]
+}
