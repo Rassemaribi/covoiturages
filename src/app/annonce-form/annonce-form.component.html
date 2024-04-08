@@ -1,40 +1,49 @@
-<div class="annonce-form">
-    <h2>Créer une nouvelle annonce de covoiturage</h2>
-    <form [formGroup]="formAnnonce" (ngSubmit)="creerAnnonce()">
-      <div class="form-group">
-        <label for="depart">Départ:</label>
-        <input type="text" id="depart" formControlName="depart" required>
-      </div>
-      <div class="form-group">
-        <label for="destination">Destination:</label>
-        <input type="text" id="destination" formControlName="destination" required>
-      </div>
-      <div class="form-group">
-        <label for="date">Date:</label>
-        <input type="date" id="date" formControlName="date" required>
-      </div>
-      <div class="form-group">
-        <label for="heureDepart">Heure de départ:</label>
-        <input type="time" id="heureDepart" formControlName="heureDepart" required>
-      </div>
-      <div class="form-group">
-        <label for="placesDisponibles">Places disponibles:</label>
-        <input type="number" id="placesDisponibles" formControlName="placesDisponibles" required>
-      </div>
-      <div class="form-group">
-        <label for="nomConducteur">Nom du conducteur:</label>
-        <input type="text" id="nomConducteur" formControlName="nomConducteur" required>
-      </div>
-      <div class="form-group">
-        <label for="telephoneConducteur">Téléphone du conducteur:</label>
-        <input type="tel" id="telephoneConducteur" formControlName="telephoneConducteur" required>
-      </div>
-      <div class="form-group">
-        <label for="vehiculeConducteur">Véhicule du conducteur:</label>
-        <input type="text" id="vehiculeConducteur" formControlName="vehiculeConducteur" required>
-      </div>
-      <div class="form-group">
-        <button type="submit">Créer l'annonce</button>
-      </div>
-    </form>
+<h1>Créer une nouvelle annonce de covoiturage</h1>
+<form [formGroup]="formAnnonce" (ngSubmit)="saveAnnonce()">
+  <div class="form-row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Départ:</mat-label>
+      <input matInput type="text" formControlName="depart" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Destination:</mat-label>
+      <input matInput type="text" formControlName="destination" required>
+    </mat-form-field>
   </div>
+  <div class="form-row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Date de départ:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateDepart" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Heure de départ:</mat-label>
+      <input matInput type="time" formControlName="heureDepart" required>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Places disponibles:</mat-label>
+      <input matInput type="number" formControlName="placesDisponibles" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nom du conducteur:</mat-label>
+      <input matInput type="text" formControlName="nomConducteur" required>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="example-full-width">
+      <mat-label>Téléphone du conducteur:</mat-label>
+      <input matInput type="tel" formControlName="telephoneConducteur" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Véhicule du conducteur:</mat-label>
+      <input matInput type="text" formControlName="vehiculeConducteur" required>
+    </mat-form-field>
+  </div>
+  <button type="submit" class="bouton-vert">
+    Créer l'annonce
+    <i class="pi pi-check"></i>
+  </button>
+</form>

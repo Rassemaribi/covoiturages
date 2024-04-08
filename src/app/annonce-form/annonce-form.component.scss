@@ -1,0 +1,68 @@
+h1 {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  
+  .example-form {
+    min-width: 300px;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    flex: 1;
+  }
+  
+  .bouton-rouge {
+    background-color: rgb(130, 130, 130);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  
+  }
+  
+  .bouton-rouge:hover {
+    background-color: rgb(64, 63, 63);
+  }
+  
+  .bouton-rouge i {
+    margin-left: 5px;
+  }
+  
+  .bouton-vert {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  
+  }
+  
+  .bouton-vert:hover {
+    background-color: rgb(1, 86, 1);
+  }
+  
+  .bouton-vert i {
+    margin-left: 5px;
+  }
+  
+  
+  form {
+    background-color: rgba(34, 111, 126, 0.196);
+    padding: 30px; /* Ajoute de l'espace à l'intérieur de la bordure pour améliorer l'apparence */
+    width: 800px; /* Vous pouvez ajuster la largeur du formulaire selon vos besoins */
+    margin: 0 auto; /* Centre le formulaire horizontalement sur la page */
+  }
+  

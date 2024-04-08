@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AnnonceCovoiturage } from '../modele/annonce';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,23 +15,19 @@ export class AnnonceService {
     return this.httpClient.post<AnnonceCovoiturage>('http://localhost:3000/annoncesCovoiturage', annonce);
   }
 
-
   recupererAnnonces(): Observable<AnnonceCovoiturage[]> {
     return this.httpClient.get<AnnonceCovoiturage[]>('http://localhost:3000/annoncesCovoiturage');
   }
 
- 
   supprimerAnnonce(id: number): Observable<any> {
-    return this.httpClient.delete('http://localhost:3000/annoncesCovoiturage/${id}');
+    return this.httpClient.delete(`http://localhost:3000/annoncesCovoiturage/${id}`);
   }
-
 
   mettreAJourAnnonce(id: number, nouvelleAnnonce: AnnonceCovoiturage): Observable<AnnonceCovoiturage> {
-    return this.httpClient.put<AnnonceCovoiturage>('http://localhost:3000/annoncesCovoiturage/${id}', nouvelleAnnonce);
+    return this.httpClient.put<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`, nouvelleAnnonce);
   }
 
-
   recupererAnnonceParId(id: number): Observable<AnnonceCovoiturage> {
-    return this.httpClient.get<AnnonceCovoiturage>('http://localhost:3000/annoncesCovoiturage/${id}');
+    return this.httpClient.get<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`);
   }
 }
