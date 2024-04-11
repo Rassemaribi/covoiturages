@@ -1,9 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AnnonceService } from '../services/annonce.service';
 import { AnnonceCovoiturage } from '../modele/annonce';
+import { v4 as uuidv4 } from 'uuid'; 
 
 @Component({
   selector: 'app-annonce-form',
@@ -11,46 +11,79 @@ import { AnnonceCovoiturage } from '../modele/annonce';
   styleUrls: ['./annonce-form.component.scss']
 })
 export class AnnonceFormComponent implements OnInit {
-  formAnnonce!: FormGroup;
   annonceId!: string;
+  id!: string;
+  formAnnonce: FormGroup;
 
   constructor(
     private annonceService: AnnonceService,
     private activatedRoute: ActivatedRoute,
-    @Inject(FormBuilder) private formBuilder: FormBuilder
-  ) {}
+    private formBuilder: FormBuilder
+  ) {
+    this.formAnnonce = this.formBuilder.group({
+      depart: ['', Validators.required],
+      destination: ['', Validators.required],
+      dateDepart: ['', Validators.required],
+      heureDepart: ['', Validators.required],
+      placesDisponibles: ['', Validators.required],
+      nomConducteur: ['', Validators.required],
+      telephoneConducteur: ['', Validators.required],
+      vehiculeConducteur: ['', Validators.required],
+      prix: ['', Validators.required],
+      bagage: ['', Validators.required],
+      fumeur: [false], // Utilisation de 'false' par défaut
+      climatisation: [false], // Utilisation de 'false' par défaut
+      sexe: ['Peu importe'] // Valeur par défaut
+    });
+  }
 
   ngOnInit(): void {
-    if (this.activatedRoute.snapshot.params['id']) {
-      this.annonceId = String(this.activatedRoute.snapshot.params['id']);
-    }
-  
-    if (this.annonceId) {
-      this.annonceService.recupererAnnonceParId(Number(this.annonceId)).subscribe((annonce: AnnonceCovoiturage) => {
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.annonceId = String(params['id']);
+        this.loadAnnonce();
+      } else {
+        this.initForm();
+      }
+    });
+  }
+
+  loadAnnonce(): void {
+    this.annonceService.recupererAnnonceParId(Number(this.annonceId!)).subscribe(
+      (annonce: AnnonceCovoiturage) => {
         this.initForm(annonce);
-      });
-    } else {
-      this.initForm();
-    }
+      },
+      (erreur) => {
+        console.error('Erreur lors du chargement de l\'annonce :', erreur);
+      }
+    );
   }
 
   initForm(annonce?: AnnonceCovoiturage): void {
-    this.formAnnonce = this.formBuilder.group({
-      depart: [annonce?.depart || '', Validators.required],
-      destination: [annonce?.destination || '', Validators.required],
-      dateDepart: [annonce?.date || '', Validators.required],
-      heureDepart: [annonce?.heureDepart || '', Validators.required],
-      placesDisponibles: [annonce?.placesDisponibles || '', Validators.required],
-      nomConducteur: [annonce?.conducteur.nom || '', Validators.required],
-      telephoneConducteur: [annonce?.conducteur.telephone || '', Validators.required],
-      vehiculeConducteur: [annonce?.conducteur.vehicule || '', Validators.required]
+    this.formAnnonce.patchValue({
+      depart: annonce?.depart || '',
+      destination: annonce?.destination || '',
+      dateDepart: annonce?.date || '',
+      heureDepart: annonce?.heureDepart || '',
+      placesDisponibles: annonce?.placesDisponibles || '',
+      nomConducteur: annonce?.conducteur.nom || '',
+      telephoneConducteur: annonce?.conducteur.telephone || '',
+      vehiculeConducteur: annonce?.conducteur.vehicule || '',
+      prix: annonce?.conducteur.prix || '',
+      climatisation: annonce?.conducteur.climatisation || false,
+      bagage: annonce?.conducteur.bagage || '',
+      fumeur: annonce?.conducteur.fumeur || false,
+      sexe: annonce?.conducteur.sexe || 'Peu importe'
     });
   }
 
   saveAnnonce(): void {
     if (this.formAnnonce.valid) {
+      // Générer un nouvel ID aléatoire entre 0 et 10000
+      const  nouvelId = Number(Math.floor(Math.random() * 10001));
+
       const annonceData: AnnonceCovoiturage = {
-        id: this.annonceId ? Number(this.annonceId) : 0,
+        id: nouvelId.toString(),
         depart: this.formAnnonce.value.depart,
         destination: this.formAnnonce.value.destination,
         date: this.formAnnonce.value.dateDepart,
@@ -59,32 +92,32 @@ export class AnnonceFormComponent implements OnInit {
         conducteur: {
           nom: this.formAnnonce.value.nomConducteur,
           telephone: this.formAnnonce.value.telephoneConducteur,
-          vehicule: this.formAnnonce.value.vehiculeConducteur
+          vehicule: this.formAnnonce.value.vehiculeConducteur,
+          prix: this.formAnnonce.value.prix,
+          climatisation: this.formAnnonce.value.climatisation,
+          bagage: this.formAnnonce.value.bagage,
+          fumeur: this.formAnnonce.value.fumeur,
+          sexe: this.formAnnonce.value.sexe
         },
         passagers: []
       };
 
-      if (this.annonceId) {
-        this.annonceService.mettreAJourAnnonce(Number(this.annonceId), annonceData).subscribe(
-          (annonce: AnnonceCovoiturage) => {
-            console.log('Annonce mise à jour avec succès :', annonce);
-            this.formAnnonce.reset();
-          },
-          (erreur) => {
-            console.error('Erreur lors de la mise à jour de l\'annonce :', erreur);
+      const saveOrUpdate = this.annonceId ?
+        this.annonceService.mettreAJourAnnonce(Number(this.annonceId), annonceData) :
+        this.annonceService.sauvegarderAnnonce(annonceData);
+
+      saveOrUpdate.subscribe(
+        (annonce: AnnonceCovoiturage) => {
+          console.log(this.annonceId ? 'Annonce mise à jour avec succès :' : 'Annonce créée avec succès :', annonce);
+          this.formAnnonce.reset();
+          if (!this.annonceId) {
+            this.initForm(); // Réinitialiser le formulaire après la création
           }
-        );
-      } else {
-        this.annonceService.sauvegarderAnnonce(annonceData).subscribe(
-          (annonce: AnnonceCovoiturage) => {
-            console.log('Annonce créée avec succès :', annonce);
-            this.formAnnonce.reset();
-          },
-          (erreur) => {
-            console.error('Erreur lors de la création de l\'annonce :', erreur);
-          }
-        );
-      }
+        },
+        (erreur) => {
+          console.error(this.annonceId ? 'Erreur lors de la mise à jour de l\'annonce :' : 'Erreur lors de la création de l\'annonce :', erreur);
+        }
+      );
     }
   }
 }

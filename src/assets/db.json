@@ -1,31 +1,24 @@
 {
   "annoncesCovoiturage": [
     {
-      "id": "1",
       "depart": "Paris",
       "destination": "Marseille",
-      "date": "2024-04-15",
+      "dateDepart": "2024-04-15",
       "heureDepart": "08:00",
       "placesDisponibles": 3,
-      "conducteur": {
-        "nom": "Jean Dupont",
-        "telephone": "+33 6 12 34 56 78",
-        "vehicule": "Renault Clio"
-      },
-      "passagers": [
-        {
-          "nom": "Marie Martin",
-          "telephone": "+33 6 98 76 54 32"
-        },
-        {
-          "nom": "Pierre Durand",
-          "telephone": "+33 6 54 32 10 98"
-        }
-      ]
+      "nomConducteur": "Jean Dupont",
+      "telephoneConducteur": "+33 6 12 34 56 78",
+      "vehiculeConducteur": "Renault Clio",
+      "prix": 25,
+      "bagage": "auto",
+      "fumeur": "non",
+      "climatisation": "non",
+      "sexe": "femme",
+      "id": "1"
     },
     {
       "id": "2",
-      "depart": "Lyon",
+      "depart": "BRUXELLE",
       "destination": "Bordeaux",
       "date": "2024-04-20",
       "heureDepart": "10:30",
@@ -33,12 +26,17 @@
       "conducteur": {
         "nom": "Sophie Leclerc",
         "telephone": "+33 6 23 45 67 89",
-        "vehicule": "Peugeot 308"
+        "vehicule": "Peugeot 308",
+        "prix": 25,
+        "climatisation": "oui",
+        "bagage": "auto",
+        "fumeur": "non",
+        "sexe": "femme"
       },
       "passagers": []
     },
     {
-      "id": 0,
+      "id": "0",
       "depart": "sfax",
       "destination": "jerba",
       "date": "2024-04-09",
@@ -47,12 +45,22 @@
       "conducteur": {
         "nom": "RACEM ARIBI",
         "telephone": "26091862",
-        "vehicule": "clio"
+        "vehicule": "clio",
+        "prix": 15,
+        "climatisation": false,
+        "bagage": "Petit bagage autorisé",
+        "fumeur": false,
+        "sexe": "Peu importe"
       },
-      "passagers": []
+      "passagers": [],
+      "prix": 15,
+      "climatisation": false,
+      "bagage": "Petit bagage autorisé",
+      "fumeur": false,
+      "sexe": "Peu importe"
     },
     {
-      "id": 0,
+      "id": "0",
       "depart": "sfax",
       "destination": "tunis",
       "heureDepart": "04:04",
@@ -60,7 +68,150 @@
       "conducteur": {
         "nom": "RACEM ARIBI",
         "telephone": "26091862",
-        "vehicule": "bmw"
+        "vehicule": "bmw",
+        "prix": 20,
+        "climatisation": true,
+        "bagage": "Grands bagages autorisés",
+        "fumeur": false,
+        "sexe": "Peu importe"
+      },
+      "passagers": [],
+      "prix": 20,
+      "climatisation": true,
+      "bagage": "Grands bagages autorisés",
+      "fumeur": false,
+      "sexe": "Peu importe"
+    },
+    {
+      "id": "0",
+      "depart": "tunis",
+      "destination": "sfax",
+      "date": "2024-04-07T23:00:00.000Z",
+      "heureDepart": "20:00",
+      "placesDisponibles": 3,
+      "conducteur": {
+        "nom": "RACEM ARIBI",
+        "telephone": "26091862",
+        "vehicule": "bmw",
+        "prix": 20,
+        "climatisation": false,
+        "bagage": "auto",
+        "fumeur": false,
+        "sexe": "femme"
+      },
+      "passagers": []
+    },
+    {
+      "id": 0,
+      "depart": "djerba",
+      "destination": "sfax",
+      "date": "2024-04-19T23:00:00.000Z",
+      "heureDepart": "14:00",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "Sophie Leclerc",
+        "telephone": "+33 6 23 45 67 89",
+        "vehicule": "Peugeot 308",
+        "prix": 45,
+        "climatisation": "non",
+        "bagage": "always",
+        "fumeur": "non",
+        "sexe": "homme"
+      },
+      "passagers": []
+    },
+    {
+      "id": 0,
+      "depart": "djerba",
+      "destination": "sfax",
+      "date": "2024-04-19T23:00:00.000Z",
+      "heureDepart": "13:00",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "Sophie Leclerc",
+        "telephone": "+33 6 23 45 67 89",
+        "vehicule": "Peugeot 308",
+        "prix": 70,
+        "climatisation": "non",
+        "bagage": "auto",
+        "fumeur": "non",
+        "sexe": "femme"
+      },
+      "passagers": []
+    },
+    {
+      "id": null,
+      "depart": "sousse",
+      "destination": "gabes",
+      "date": "2024-04-11T23:00:00.000Z",
+      "heureDepart": "05:00",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "amir",
+        "telephone": "214578965",
+        "vehicule": "mercedes",
+        "prix": 53,
+        "climatisation": "oui",
+        "bagage": "auto",
+        "fumeur": "oui",
+        "sexe": "femme"
+      },
+      "passagers": []
+    },
+    {
+      "id": 20,
+      "depart": "sousse",
+      "destination": "gabes",
+      "date": "2024-04-11T23:00:00.000Z",
+      "heureDepart": "20:00",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "amir",
+        "telephone": "828287272",
+        "vehicule": "mercedes",
+        "prix": 55,
+        "climatisation": "oui",
+        "bagage": "auto",
+        "fumeur": "non",
+        "sexe": "homme"
+      },
+      "passagers": []
+    },
+    {
+      "id": 3723,
+      "depart": "sousse",
+      "destination": "gabes",
+      "date": "2024-04-11T23:00:00.000Z",
+      "heureDepart": "20:00",
+      "placesDisponibles": 2,
+      "conducteur": {
+        "nom": "amir",
+        "telephone": "47125647",
+        "vehicule": "mercedes",
+        "prix": 41,
+        "climatisation": "non",
+        "bagage": "auto",
+        "fumeur": "non",
+        "sexe": "femme"
+      },
+      "passagers": []
+    },
+    {
+      "id": "6433",
+      "depart": ".6.66.6",
+      "destination": "6.6.6",
+      "date": "2024-04-11T23:00:00.000Z",
+      "heureDepart": "06:36",
+      "placesDisponibles": 55,
+      "conducteur": {
+        "nom": "vbnbr",
+        "telephone": "6.666.6.6.6",
+        "vehicule": "gby(b",
+        "prix": 55,
+        "climatisation": "oui",
+        "bagage": "auto",
+        "fumeur": "non",
+        "sexe": "Peu importe"
       },
       "passagers": []
     }
