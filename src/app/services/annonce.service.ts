@@ -7,6 +7,7 @@ import { AnnonceCovoiturage } from '../modele/annonce';
   providedIn: 'root'
 })
 export class AnnonceService {
+
   annonces: AnnonceCovoiturage[] = [];
 
   constructor(private httpClient: HttpClient) {}
@@ -29,5 +30,14 @@ export class AnnonceService {
 
   recupererAnnonceParId(id: number): Observable<AnnonceCovoiturage> {
     return this.httpClient.get<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`);
+  
   }
+  filtrerAnnonces(searchTerm1: string, searchTerm2: string): Observable<AnnonceCovoiturage[]> {
+    const params = {
+      depart: searchTerm1,
+      destination: searchTerm2
+    };
+    return this.httpClient.get<AnnonceCovoiturage[]>('http://localhost:3000/annoncesCovoiturage', { params });
+  }
+
 }

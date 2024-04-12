@@ -32,7 +32,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     AnnonceFormComponent,
     ListeAnnonceComponent,
-    NavbarComponent,
+
 
 
   ],
