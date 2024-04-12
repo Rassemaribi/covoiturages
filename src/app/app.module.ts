@@ -22,7 +22,7 @@ import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
-import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -32,6 +32,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     AnnonceFormComponent,
     ListeAnnonceComponent,
+    HomeComponent,
 
 
 
