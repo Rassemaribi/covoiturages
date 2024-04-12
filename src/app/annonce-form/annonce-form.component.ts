@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AnnonceService } from '../services/annonce.service';
 import { AnnonceCovoiturage } from '../modele/annonce';
 import { v4 as uuidv4 } from 'uuid'; 
@@ -18,7 +18,8 @@ export class AnnonceFormComponent implements OnInit {
   constructor(
     private annonceService: AnnonceService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.formAnnonce = this.formBuilder.group({
       depart: ['', Validators.required],
@@ -109,9 +110,11 @@ export class AnnonceFormComponent implements OnInit {
       saveOrUpdate.subscribe(
         (annonce: AnnonceCovoiturage) => {
           console.log(this.annonceId ? 'Annonce mise à jour avec succès :' : 'Annonce créée avec succès :', annonce);
-          this.formAnnonce.reset();
-          if (!this.annonceId) {
-            this.initForm(); // Réinitialiser le formulaire après la création
+          this.router.navigate(['/']);  // Navigate to /create page
+                if (!this.annonceId) {
+            this.initForm();
+            
+            
           }
         },
         (erreur) => {

@@ -1,5 +1,6 @@
 <router-outlet></router-outlet>
-<h1>Créer une nouvelle annonce de covoiturage</h1>
+<h1 *ngIf="!annonceId">Créer une nouvelle annonce de covoiturage</h1>
+<h1 *ngIf="annonceId">Modifier annonce de covoiturage</h1>
 <form [formGroup]="formAnnonce" (ngSubmit)="saveAnnonce()">
   <div class="form-row">
     <mat-form-field class="example-full-width">
@@ -83,4 +84,8 @@
     Créer l'annonce
     <i class="pi pi-check"></i>
   </button>
+  <button type="submit" class="bouton-rouge">
+    Annuler
+     <i class="pi pi-times"></i>
+   </button>
 </form>

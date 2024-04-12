@@ -1,5 +1,5 @@
 h1 {
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
   }
@@ -23,7 +23,8 @@ h1 {
   }
   
   .bouton-rouge {
-    background-color: rgb(130, 130, 130);
+    margin-left: 10px;
+    background-color: rgb(202, 2, 2);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -33,7 +34,7 @@ h1 {
   }
   
   .bouton-rouge:hover {
-    background-color: rgb(64, 63, 63);
+    background-color: rgb(98, 1, 1);
   }
   
   .bouton-rouge i {
@@ -41,6 +42,7 @@ h1 {
   }
   
   .bouton-vert {
+    margin-left: 470px;
     background-color: green;
     color: white;
     border: none;
@@ -64,6 +66,8 @@ h1 {
     padding: 30px; /* Ajoute de l'espace à l'intérieur de la bordure pour améliorer l'apparence */
     width: 800px; /* Vous pouvez ajuster la largeur du formulaire selon vos besoins */
     margin: 0 auto; /* Centre le formulaire horizontalement sur la page */
+    border-radius: 15px; /* Ajoute des coins arrondis aux bords du formulaire */
+    height: 640px;
   }
   
   .example-container mat-form-field + mat-form-field {

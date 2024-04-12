@@ -14,11 +14,20 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AnnonceFormComponent } from './annonce-form/annonce-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnnonceFormComponent
+    AnnonceFormComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -31,9 +40,17 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule
+    
+    
+
 
   ],
+
   providers: [
     provideAnimationsAsync()
   ],
