@@ -15,17 +15,18 @@ export class ListeAnnonceComponent  {
   showTable: boolean = false;
   loading: boolean = false;
   searchKeyword: string = '';
+  searchDate: string = '';
 
 
 
   constructor(private annonceService: AnnonceService) {}
 
   onSearch(): void {
-    if (this.searchTerm1 && this.searchTerm2) {
-      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2)
+    if (this.searchTerm1 && this.searchTerm2 && this.searchDate) { // Check if searchDate is also provided
+      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2, this.searchDate) // Include searchDate in the call
         .subscribe(annoncesFiltrees => {
           this.annonces = annoncesFiltrees;
-          this.showTable = this.annonces.length > 0; // Add this line
+          this.showTable = this.annonces.length > 0;
         });
     }
   }
