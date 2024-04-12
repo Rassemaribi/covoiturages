@@ -1,0 +1,87 @@
+<div class="multi-search-bar-container">
+    <span class="spaced-search-bar p-input-icon-left">
+       
+      <input type="text" [(ngModel)]="searchTerm1" placeholder="Départ" >
+    </span>
+    <div class="search-bar">
+        
+        <input type="text" [(ngModel)]="searchTerm2" placeholder="Destination"   >
+      </div>
+      <div class="search-bar">
+        
+      <!--  <div class="search-bar">
+            <p-calendar [(ngModel)]="date1" [showIcon]="true"></p-calendar>
+        </div>
+      </div>-->
+    <button (click)="onSearch()">Rechercher</button>
+    
+  
+    </div>
+    <div class="card" *ngIf="showTable">
+        <p-table #dt [value]="annonces" [rows]="5" [showCurrentPageReport]="true"
+                  [rowsPerPageOptions]="[5, 10, 20]" [loading]="loading" [paginator]="true"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [globalFilterFields]="['depart', 'destination', 'date', 'heureDepart', 'placesDisponibles']"
+                  [tableStyle]="{ 'min-width': '75rem' }">
+          <ng-template pTemplate="caption">
+            <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchKeyword"
+                       (input)="dt.filterGlobal(searchKeyword, 'contains')" placeholder="Rechercher" />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:22%">Départ</th>
+              <th style="width:22%">Destination</th>
+              <th style="width:22%">Date</th>
+              <th style="width:22%">Heure</th>
+              <th style="width:12%">Places disponibles</th>
+            </tr>
+            <tr>
+              <th>
+                <p-columnFilter type="text" field="depart"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="destination"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="date"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="heureDepart"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="number" field="placesDisponibles"></p-columnFilter>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-annonce>
+            <tr>
+              <td>
+                {{ annonce.depart }}
+              </td>
+              <td>
+                {{ annonce.destination }}
+              </td>
+              <td>
+                {{ annonce.date }}
+              </td>
+              <td>
+                {{ annonce.heureDepart }}
+              </td>
+              <td>
+                {{ annonce.placesDisponibles }}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5">Pas d'annonces trouvées.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      

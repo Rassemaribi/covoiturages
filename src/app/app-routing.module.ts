@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnnonceFormComponent } from './annonce-form/annonce-form.component';
+import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'create',
     pathMatch: 'full',
     component:AnnonceFormComponent
+  },
+  {
+    path: 'liste-annonce',
+    pathMatch: 'full',
+    component:ListeAnnonceComponent
   },
 ];
 

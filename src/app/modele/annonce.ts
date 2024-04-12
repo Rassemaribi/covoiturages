@@ -3,7 +3,7 @@ export interface AnnonceCovoiturage {
   id: string; 
   depart: string; 
   destination: string; 
-  date: string; 
+  date: Date; 
   heureDepart: string;
   placesDisponibles: number; 
   conducteur: Conducteur;

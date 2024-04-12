@@ -18,6 +18,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -26,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     AnnonceFormComponent,
+    ListeAnnonceComponent,
 
 
   ],
@@ -44,7 +49,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    TableModule,
+    FormsModule,
+    CalendarModule
     
     
 

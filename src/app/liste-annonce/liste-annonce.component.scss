@@ -1,0 +1,30 @@
+.multi-search-bar-container {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .search-bar {
+    margin: 0 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px; /* Adjust width as needed */
+  }
+  
+  button {
+    margin: 0 10px;
+    padding: 10px 30px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
