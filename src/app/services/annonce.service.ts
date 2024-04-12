@@ -32,11 +32,10 @@ export class AnnonceService {
     return this.httpClient.get<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`);
   
   }
-  filtrerAnnonces(searchTerm1: string, searchTerm2: string, date: string): Observable<AnnonceCovoiturage[]> {
+  filtrerAnnonces(searchTerm1: string, searchTerm2: string): Observable<AnnonceCovoiturage[]> {
     const params = {
       depart: searchTerm1,
-      destination: searchTerm2,
-      date: date
+      destination: searchTerm2
     };
     return this.httpClient.get<AnnonceCovoiturage[]>('http://localhost:3000/annoncesCovoiturage', { params });
   }

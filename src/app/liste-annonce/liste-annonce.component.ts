@@ -16,49 +16,14 @@ export class ListeAnnonceComponent  {
   showTable: boolean = false;
   loading: boolean = false;
   searchKeyword: string = '';
-
+  searchDate: string = '';
 
 
   constructor(private annonceService: AnnonceService) { }
   
-  
-
-
-
-  
-
-  ngOnInit(): void {
-    this.loadAnnonces();
-  }
-
-  loadAnnonces() {
-    this.annonceService.recupererAnnonces().subscribe((annonces: AnnonceCovoiturage[]) => {
-      this.annonces = annonces;
-      this.filterAnnonces();
-    });
-  }
-
-  filterAnnonces() {
-    const filteredAnnonces = this.annonces.filter(annonce => {
-      const lowerCaseDepart = annonce.depart.toLowerCase();
-      const lowerCaseDestination = annonce.destination.toLowerCase();
-      
-      return (
-        (!this.searchTerm1 || lowerCaseDepart.includes(this.searchTerm1.toLowerCase())) &&
-        (!this.searchTerm2 || lowerCaseDestination.includes(this.searchTerm2.toLowerCase())) 
-      );
-    });
-
-    this.showTable = filteredAnnonces.length > 0;
-    this.loading = false;
-  }
-
-  
-
-
   onSearch(): void {
-    if (this.searchTerm1 && this.searchTerm2 && this.searchDate) { // Check if searchDate is also provided
-      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2, this.searchDate) // Include searchDate in the call
+    if (this.searchTerm1 && this.searchTerm2 ) { // Check if searchDate is also provided
+      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2) // Include searchDate in the call
         .subscribe(annoncesFiltrees => {
           this.annonces = annoncesFiltrees;
           this.showTable = this.annonces.length > 0;
