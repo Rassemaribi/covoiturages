@@ -2,20 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../services/annonce.service';
 import { AnnonceCovoiturage } from '../modele/annonce';
 
+
 @Component({
   selector: 'app-liste-annonce',
   templateUrl: './liste-annonce.component.html',
   styleUrls: ['./liste-annonce.component.scss']
+  
 })
-export class ListeAnnonceComponent implements OnInit {
+export class ListeAnnonceComponent  {
   annonces: AnnonceCovoiturage[] = [];
-  showTable: boolean = false;
-  loading: boolean = true;
   searchTerm1: string = '';
   searchTerm2: string = '';
+  showTable: boolean = false;
+  loading: boolean = true;
+  
   searchKeyword:string='';
 
   constructor(private annonceService: AnnonceService) { }
+  
+  
+
+
+
+  
 
   ngOnInit(): void {
     this.loadAnnonces();
@@ -43,8 +52,16 @@ export class ListeAnnonceComponent implements OnInit {
     this.loading = false;
   }
 
-  onSearch() {
-    this.loading = true;
-    this.filterAnnonces();
+  
+
+
+  onSearch(): void {
+    if (this.searchTerm1 && this.searchTerm2) {
+      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2)
+        .subscribe(annoncesFiltrees => {
+          this.annonces = annoncesFiltrees;
+          this.showTable = this.annonces.length > 0; // Add this line
+        });
+    }
   }
 }
