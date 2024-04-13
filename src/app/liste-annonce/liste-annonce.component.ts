@@ -23,8 +23,11 @@ export class ListeAnnonceComponent  {
   constructor(private annonceService: AnnonceService) { }
   
   onSearch(): void {
-    if (this.searchTerm1 && this.searchTerm2 ) { // Check if searchDate is also provided
-      this.annonceService.filtrerAnnonces(this.searchTerm1, this.searchTerm2) // Include searchDate in the call
+    if (this.searchTerm1 && this.searchTerm2) {
+      const searchTerm1Lower = this.searchTerm1.toUpperCase();
+      const searchTerm2Lower = this.searchTerm2.toUpperCase();
+
+      this.annonceService.filtrerAnnonces(searchTerm1Lower, searchTerm2Lower)
         .subscribe(annoncesFiltrees => {
           this.annonces = annoncesFiltrees;
           this.showTable = this.annonces.length > 0;
@@ -46,4 +49,5 @@ export class ListeAnnonceComponent  {
       // Handle scenario where no places are available (optional: show message)
     }
   }
+
 }
