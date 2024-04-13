@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AnnonceCovoiturage } from '../modele/annonce';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,9 +36,10 @@ export class AnnonceService {
   filtrerAnnonces(searchTerm1: string, searchTerm2: string): Observable<AnnonceCovoiturage[]> {
     const params = {
       depart: searchTerm1,
-      destination: searchTerm2
+      destination: searchTerm2,
     };
     return this.httpClient.get<AnnonceCovoiturage[]>('http://localhost:3000/annoncesCovoiturage', { params });
   }
+  
 
 }

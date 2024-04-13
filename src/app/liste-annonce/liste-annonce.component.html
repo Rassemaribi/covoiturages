@@ -5,6 +5,9 @@
   <div class="search-bar">
       <input type="text" [(ngModel)]="searchTerm2" placeholder="Destination">
   </div>
+  <div class="search-bar">
+    <p-calendar [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay"></p-calendar>
+  </div>
   <button (click)="onSearch()">Rechercher</button>
 </div>
 
@@ -14,40 +17,18 @@
            currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} annonces"
            [globalFilterFields]="['depart', 'destination', 'date', 'heureDepart', 'placesDisponibles']"
            [tableStyle]="{ 'min-width': '75rem' }">
-      <ng-template pTemplate="caption">
-          <div class="flex">
-              <span class="p-input-icon-left ml-auto">
-                  <i class="pi pi-search"></i>
-                  <input pInputText type="text" [(ngModel)]="searchKeyword"
-                         (input)="dt.filterGlobal(searchKeyword, 'contains')" placeholder="Rechercher"/>
-              </span>
-          </div>
-      </ng-template>
+      
       <ng-template pTemplate="header">
           <tr>
-              <th style="width:22%">Départ</th>
-              <th style="width:22%">Destination</th>
-              <th style="width:22%">Date</th>
-              <th style="width:22%">Heure</th>
+              <th style="width:12%">Départ</th>
+              <th style="width:12%">Destination</th>
+              <th style="width:12%">Date</th>
+              <th style="width:12%">Heure</th>
               <th style="width:12%">Places disponibles</th>
+              <th style="width:12%">Actions</th>
+
           </tr>
-          <tr>
-              <th>
-                  <p-columnFilter type="text" field="depart"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="text" field="destination"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="text" field="date"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="text" field="heureDepart"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="number" field="placesDisponibles"></p-columnFilter>
-              </th>
-          </tr>
+          
       </ng-template>
       <ng-template pTemplate="body" let-annonce>
           <tr>
@@ -65,6 +46,10 @@
               </td>
               <td>
                   {{ annonce.placesDisponibles }}
+              </td>
+              <td>
+                <button (click)="reserver(annonce)">Réserver</button>
+
               </td>
           </tr>
       </ng-template>
