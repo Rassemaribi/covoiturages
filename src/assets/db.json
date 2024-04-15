@@ -1,25 +1,6 @@
 {
   "annoncesCovoiturage": [
     {
-      "id": null,
-      "depart": "sousse",
-      "destination": "gabes",
-      "date": "2024-04-11T23:00:00.000Z",
-      "heureDepart": "05:00",
-      "placesDisponibles": 2,
-      "conducteur": {
-        "nom": "amir",
-        "telephone": "214578965",
-        "vehicule": "mercedes",
-        "prix": 53,
-        "climatisation": "oui",
-        "bagage": "auto",
-        "fumeur": "oui",
-        "sexe": "femme"
-      },
-      "passagers": []
-    },
-    {
       "id": "6433",
       "depart": ".6.66.6",
       "destination": "6.6.6",
@@ -44,7 +25,7 @@
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "20:00",
-      "placesDisponibles": "1",
+      "placesDisponibles": 1,
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
@@ -120,7 +101,7 @@
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "20:00",
-      "placesDisponibles": 3,
+      "placesDisponibles": 2,
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
@@ -131,7 +112,13 @@
         "fumeur": "non",
         "sexe": "femme"
       },
-      "passagers": []
+      "passagers": [
+        {
+          "nom": "John Doe",
+          "telephone": "123-456-7890",
+          "sexe": "Male"
+        }
+      ]
     },
     {
       "id": "4941",

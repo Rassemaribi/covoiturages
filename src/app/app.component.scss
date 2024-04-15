@@ -8,7 +8,7 @@
         text-align:center;
         font-size: 24px; // Increase font size
         margin: 20px 0; // Add vertical margin
-        color: #0b23f6;
+        color: rgb(39, 83, 196);
       }
       mat-nav-list {
         width: 100%;
@@ -40,4 +40,12 @@
     .mat-toolbar {
       background-color: #B6D8F2;
     }
+  }
+  mat-icon{
+    color: #36548cc5;
+    size: 100px;
+  }
+  span{
+    color: rgb(39, 83, 196);
+    font-size:medium;
   }

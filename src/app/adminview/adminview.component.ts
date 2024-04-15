@@ -53,4 +53,23 @@ export class AdminviewComponent implements OnInit {
       }
     );
   }
+  annonceDetails!: AnnonceCovoiturage; // Define annonceDetails
+annonceDialog: boolean = false; // Define annonceDialog
+
+loadAnnonceDetails(id: string) {
+  this.annonceService.recupererAnnonceParId(id.toString()).subscribe(
+    (data: AnnonceCovoiturage) => {
+      this.annonceDetails = data; // Assuming the service returns a single object
+      console.log('Annonce Details:', this.annonceDetails);
+      this.annonceDialog = true;
+    },
+    (error: any) => {
+      console.error('Erreur lors du chargement des détails de l\'annonce :', error);
+    }
+  );
+}
+
+hideAnnonceDialog() {
+  this.annonceDialog = false;
+}
 }
