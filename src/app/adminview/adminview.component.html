@@ -1,0 +1,52 @@
+
+  
+  <div class="card">
+    <p-table #dt [value]="annonces" [rows]="5" [showCurrentPageReport]="true"
+             [rowsPerPageOptions]="[5, 10, 20]" [loading]="loading" [paginator]="true"
+             currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} annonces"
+             [globalFilterFields]="['depart', 'destination', 'date', 'heureDepart', 'placesDisponibles']"
+             [tableStyle]="{ 'min-width': '75rem' }">
+        
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:12%">Départ</th>
+                <th style="width:12%">Destination</th>
+                <th style="width:12%">Date</th>
+                <th style="width:12%">Heure</th>
+                <th style="width:12%">Places disponibles</th>
+                <th style="width:12%">Actions</th>
+  
+            </tr>
+            
+        </ng-template>
+        <ng-template pTemplate="body" let-annonce>
+            <tr>
+                <td>
+                    {{ annonce.depart }}
+                </td>
+                <td>
+                    {{ annonce.destination }}
+                </td>
+                <td>
+                    {{ annonce.date }}
+                </td>
+                <td>
+                    {{ annonce.heureDepart }}
+                </td>
+                <td>
+                    {{ annonce.placesDisponibles }}
+                </td>
+                <td>
+                  <p-button (click)="supprimerAnnonce(annonce.id)" label="Supprimer" severity="danger"></p-button>
+  
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">Pas d'annonces trouvées.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+  

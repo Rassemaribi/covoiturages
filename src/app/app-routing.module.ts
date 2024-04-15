@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnnonceFormComponent } from './annonce-form/annonce-form.component';
 import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
 import { HomeComponent } from './home/home.component';
+import { AdminviewComponent } from './adminview/adminview.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'home',
     pathMatch: 'full',
     component:HomeComponent
+  },
+  {
+    path: 'adminview',
+    pathMatch: 'full',
+    component:AdminviewComponent
   },
 ];
 

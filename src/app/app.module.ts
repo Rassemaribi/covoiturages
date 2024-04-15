@@ -23,6 +23,7 @@ import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { HomeComponent } from './home/home.component';
+import { AdminviewComponent } from './adminview/adminview.component';
 
 
 
@@ -34,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     AnnonceFormComponent,
     ListeAnnonceComponent,
     HomeComponent,
+    AdminviewComponent,
 
 
 
