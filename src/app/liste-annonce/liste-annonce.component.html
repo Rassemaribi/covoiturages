@@ -1,16 +1,16 @@
-<div class="multi-search-bar-container">
-  <span class="spaced-search-bar p-input-icon-left">
-      <input type="text" [(ngModel)]="searchTerm1" placeholder="Départ">
-  </span>
-  <div class="search-bar">
-      <input type="text" [(ngModel)]="searchTerm2" placeholder="Destination">
-  </div>
-  <div class="search-bar">
-    <p-calendar [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay"></p-calendar>
-  </div>
-  <button (click)="onSearch()">Rechercher</button>
-</div>
 
+<div class="multi-search-bar-container">
+    <span class="spaced-search-bar p-input-icon-left">
+        <input class="input-field" type="text" [(ngModel)]="searchTerm1" placeholder="Départ">
+    </span>
+    <div class="search-bar">
+        <input class="input-field" pInputText class="p-inputtext-lg" type="text" [(ngModel)]="searchTerm2" placeholder="Destination">
+    </div>
+    <div class="search-bar">
+      <p-calendar class="input-field" [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay"></p-calendar>
+    </div>
+    <button (click)="onSearch()">Rechercher</button>
+  </div>
 <div class="card" *ngIf="showTable">
   <p-table #dt [value]="annonces" [rows]="5" [showCurrentPageReport]="true"
            [rowsPerPageOptions]="[5, 10, 20]" [loading]="loading" [paginator]="true"
@@ -40,6 +40,7 @@
               </td>
               <td>
                   {{ annonce.date | date:'yyyy-MM-dd ' }}
+                {{ annonce.date | date:'dd/MM/yyyy' }}
               </td>
               <td>
                   {{ annonce.heureDepart }}

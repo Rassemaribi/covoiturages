@@ -25,10 +25,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { HomeComponent } from './home/home.component';
 import { AdminviewComponent } from './adminview/adminview.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
-import {ToolbarModule} from 'primeng/toolbar';
-import {ToastModule} from 'primeng/toast';
-import {DialogModule} from 'primeng/dialog';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -65,9 +65,9 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     TableModule,
     FormsModule,
     CalendarModule,
+    DialogModule,
     ToolbarModule,
     ToastModule,
-    DialogModule,
     ConfirmDialogModule
     
     

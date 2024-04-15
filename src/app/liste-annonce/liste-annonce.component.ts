@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../services/annonce.service';
-import { AnnonceCovoiturage } from '../modele/annonce';
-
+import { AnnonceCovoiturage, Passager } from '../modele/annonce';
 
 @Component({
   selector: 'app-liste-annonce',
   templateUrl: './liste-annonce.component.html',
   styleUrls: ['./liste-annonce.component.scss']
-  
 })
 export class ListeAnnonceComponent  {
   annonces: AnnonceCovoiturage[] = [];
@@ -17,6 +15,7 @@ export class ListeAnnonceComponent  {
   loading: boolean = false;
   searchKeyword: string = '';
   searchDate: string = '';
+  date1!:Date;
   date1: string = '';
 
   constructor(private annonceService: AnnonceService) { }
@@ -33,20 +32,32 @@ export class ListeAnnonceComponent  {
         });
     }
   }
+  
   reserver(annonce: AnnonceCovoiturage): void {
+    let passager: Passager = {
+      nom: 'John Doe',
+      telephone: '123-456-7890',
+      sexe: 'Male'
+    };
+
     if (annonce.placesDisponibles > 0) {
       annonce.placesDisponibles--; // Decrement available places
-  
+
+      // Add the passenger to the annonce
+      if (!annonce.passagers) {
+        annonce.passagers = [];
+      }
+      annonce.passagers.push(passager);
+
       // Call an API endpoint or service to update the annonce on the server
       this.annonceService.mettreAJourAnnonce(Number(annonce.id), annonce)
         .subscribe(response => {
           // Handle successful update (optional: show confirmation message)
         }, error => {
-          
+          // Handle error (optional: show error message)
         });
     } else {
       // Handle scenario where no places are available (optional: show message)
     }
   }
-
 }

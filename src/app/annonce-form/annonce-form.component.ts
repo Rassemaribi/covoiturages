@@ -1,9 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnnonceService } from '../services/annonce.service';
 import { AnnonceCovoiturage } from '../modele/annonce';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-annonce-form',
@@ -12,7 +12,6 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AnnonceFormComponent implements OnInit {
   annonceId!: string;
-  id!: string;
   formAnnonce: FormGroup;
 
   constructor(
@@ -32,9 +31,9 @@ export class AnnonceFormComponent implements OnInit {
       vehiculeConducteur: ['', Validators.required],
       prix: ['', Validators.required],
       bagage: ['', Validators.required],
-      fumeur: [false], // Utilisation de 'false' par défaut
-      climatisation: [false], // Utilisation de 'false' par défaut
-      sexe: ['Peu importe'] // Valeur par défaut
+      fumeur: [false],
+      climatisation: [false],
+      sexe: ['Peu importe']
     });
   }
 
@@ -80,10 +79,10 @@ export class AnnonceFormComponent implements OnInit {
 
   saveAnnonce(): void {
     if (this.formAnnonce.valid) {
-      // Générer un nouvel ID aléatoire entre 0 et 10000
-      const  nouvelId = Number(Math.floor(Math.random() * 10001));
+      const nouvelId = uuidv4();
 
       const annonceData: AnnonceCovoiturage = {
+        id: nouvelId,
         id: String(nouvelId),
         depart: this.formAnnonce.value.depart,
         destination: this.formAnnonce.value.destination,
@@ -100,7 +99,12 @@ export class AnnonceFormComponent implements OnInit {
           fumeur: this.formAnnonce.value.fumeur,
           sexe: this.formAnnonce.value.sexe
         },
-        passagers: []
+        passagers: [],
+        sexe: this.formAnnonce.value.sexe,
+        fumeur: this.formAnnonce.value.fumeur,
+        bagage: this.formAnnonce.value.bagage,
+        climatisation: this.formAnnonce.value.climatisation,
+        prix: this.formAnnonce.value.prix
       };
 
       const saveOrUpdate = this.annonceId ?
@@ -113,8 +117,6 @@ export class AnnonceFormComponent implements OnInit {
           this.router.navigate(['/annonces']);  // Navigate to /create page
                 if (!this.annonceId) {
             this.initForm();
-            
-            
           }
         },
         (erreur) => {
