@@ -57,7 +57,11 @@ export class AdminviewComponent implements OnInit {
 annonceDialog: boolean = false; // Define annonceDialog
 
 loadAnnonceDetails(id: string) {
+<<<<<<< Updated upstream
   this.annonceService.recupererAnnonceParId(id.toString()).subscribe(
+=======
+  this.annonceService.recupererAnnonceParId(Number(id)).subscribe(
+>>>>>>> Stashed changes
     (data: AnnonceCovoiturage) => {
       this.annonceDetails = data; // Assuming the service returns a single object
       console.log('Annonce Details:', this.annonceDetails);
@@ -67,9 +71,18 @@ loadAnnonceDetails(id: string) {
       console.error('Erreur lors du chargement des détails de l\'annonce :', error);
     }
   );
+<<<<<<< Updated upstream
 }
 
 hideAnnonceDialog() {
   this.annonceDialog = false;
 }
+=======
+>>>>>>> Stashed changes
+}
+
+hideAnnonceDialog() {
+  this.annonceDialog = false;
+}
+
 }

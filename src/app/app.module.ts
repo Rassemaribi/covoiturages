@@ -24,11 +24,16 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { HomeComponent } from './home/home.component';
 import { AdminviewComponent } from './adminview/adminview.component';
+<<<<<<< Updated upstream
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+=======
+import { DialogModule } from 'primeng/dialog';
+
+>>>>>>> Stashed changes
 
 
 
@@ -65,10 +70,14 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     TableModule,
     FormsModule,
     CalendarModule,
+<<<<<<< Updated upstream
     DialogModule,
     ToolbarModule,
     ToastModule,
     ConfirmDialogModule
+=======
+    DialogModule 
+>>>>>>> Stashed changes
     
     
 
