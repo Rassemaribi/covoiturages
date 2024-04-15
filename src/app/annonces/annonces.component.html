@@ -4,7 +4,7 @@
       <ng-template pTemplate="left">
         <button routerLink="/create" pButton pRipple label="Nouveau" icon="pi pi-plus"
                 class="p-button-success mr-2"></button>
-        <button pButton pRipple label="Retirer" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedAnnonce()"
+        <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedAnnonce()"
                 [disabled]="!selectedAnnonce || !selectedAnnonce.length"></button>
       </ng-template>
   
@@ -12,7 +12,7 @@
     </p-toolbar>
   
     <p-table #dt [value]="annonces" [rows]="5" [paginator]="true"
-             [globalFilterFields]="['nom', 'reference', 'marque', 'modele']" [tableStyle]="{ 'min-width': '75rem' }"
+             [globalFilterFields]="['depart', 'destination','date']" [tableStyle]="{ 'min-width': '75rem' }"
              [(selection)]="selectedAnnonce" [rowHover]="true" dataKey="id"
              currentPageReportTemplate="Affichage de {first} à {last} sur un total de {totalRecords} entrées"
              [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 20]">
@@ -20,8 +20,8 @@
         <div class="flex align-items-center justify-content-between">
           <h5>Liste des annonces</h5>
           <span class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input pInputText type="text" [(ngModel)]="searchKeyword" (input)="dt.filterGlobal(searchKeyword, 'contains')"
+            
+            <input class="filtre" type="text" [(ngModel)]="searchKeyword" (input)="dt.filterGlobal(searchKeyword, 'contains')"
                    placeholder="Rechercher"/>
   
           </span>
@@ -32,27 +32,20 @@
           <th style="width: 4rem">
             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
-          <th pSortableColumn="numeroSerie" style="min-width:13rem">Numéro de Série
-            <p-sortIcon field="numeroSerie"></p-sortIcon>
+          <th pSortableColumn="depart" style="min-width:15rem">Départ
+            <p-sortIcon field="depart"></p-sortIcon>
           </th>
-          <th pSortableColumn="reference" style="min-width:10rem">Référence
-            <p-sortIcon field="reference"></p-sortIcon>
+          <th pSortableColumn="destination" style="min-width:15rem">Destination
+            <p-sortIcon field="destination"></p-sortIcon>
           </th>
-          <th pSortableColumn="nom" style="min-width:10rem">Désignation
-            <p-sortIcon field="nom"></p-sortIcon>
+          <th pSortableColumn="date" style="min-width:15rem">Date
+            <p-sortIcon field="date"></p-sortIcon>
           </th>
-          <th pSortableColumn="marque" style="min-width:10rem">Marque
-            <p-sortIcon field="marque"></p-sortIcon>
+          <th pSortableColumn="Heure" style="min-width:15rem">Heure de départ
+            <p-sortIcon field="Heure"></p-sortIcon>
           </th>
-          <th pSortableColumn="modele" style="min-width:10rem">Modèle
-            <p-sortIcon field="modele"></p-sortIcon>
-          </th>
-  
-          <th pSortableColumn="dateAchat" style="min-width:13rem">Date Acquisition
-            <p-sortIcon field="dateAchat"></p-sortIcon>
-          </th>
-          <th pSortableColumn="etat" style="min-width:10rem">Etat
-            <p-sortIcon field="etat"></p-sortIcon>
+          <th pSortableColumn="placesDisponibles" style="min-width:15rem">Places Disponibles
+            <p-sortIcon field="placesDisponibles"></p-sortIcon>
           </th>
           <th style="min-width:15rem">Actions</th>
         </tr>
@@ -64,15 +57,17 @@
           </td>
           <td>{{ annonce.depart }}</td>
           <td>{{ annonce.destination }}</td>
-          <td>{{ annonce.date}}</td>
+          <td>{{ annonce.date | date:'yyyy-MM-dd '}}</td>
           <td>{{ annonce.heureDepart }}</td>
-          <td>{{ annonce.placesDisponibles }}</td>
+          <td [ngClass]="{'outofstock': annonce.placesDisponibles === 0,'instock': annonce.placesDisponibles> 0}">
+            {{annonce.placesDisponibles}}
+          </td>
          
           
           <td>
             <div class="conteneur-boutons">
               <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2"
-                      routerLink="/actifs/{{annonce.id}}/edit"></button>
+                      routerLink="/{{annonce.id}}/edit"></button>
               <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2"
                       (click)="deleteAnnonce(annonce)"></button>
               <button pButton pRipple icon="pi pi-info-circle" class="p-button-rounded p-button-info mr-2"
@@ -83,12 +78,12 @@
       </ng-template>
       <ng-template pTemplate="summary">
         <div class="flex align-items-center justify-content-between">En total il y a {{ annonces ? annonces.length : 0 }}
-          actifs.
+          annonces.
         </div>
       </ng-template>
     </p-table>
   </div>
-  <p-dialog [(visible)]="actifDialog" header="Actif Details" [modal]="true" [style]="{ width: '450px' }">
+  <p-dialog [(visible)]="actifDialog" header="Annonce Details" [modal]="true" [style]="{ width: '450px' }">
   
     <ng-template pTemplate="content">
       <div *ngIf="annonceDetails">

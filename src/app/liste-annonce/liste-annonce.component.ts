@@ -17,8 +17,7 @@ export class ListeAnnonceComponent  {
   loading: boolean = false;
   searchKeyword: string = '';
   searchDate: string = '';
-  date1!:Date;
-
+  date1: string = '';
 
   constructor(private annonceService: AnnonceService) { }
   
@@ -39,7 +38,7 @@ export class ListeAnnonceComponent  {
       annonce.placesDisponibles--; // Decrement available places
   
       // Call an API endpoint or service to update the annonce on the server
-      this.annonceService.mettreAJourAnnonce(annonce.id, annonce)
+      this.annonceService.mettreAJourAnnonce(Number(annonce.id), annonce)
         .subscribe(response => {
           // Handle successful update (optional: show confirmation message)
         }, error => {

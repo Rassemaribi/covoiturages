@@ -50,7 +50,7 @@ export class AnnonceFormComponent implements OnInit {
   }
 
   loadAnnonce(): void {
-    this.annonceService.recupererAnnonceParId(this.annonceId!).subscribe(
+    this.annonceService.recupererAnnonceParId(Number(this.annonceId!)).subscribe(
       (annonce: AnnonceCovoiturage) => {
         this.initForm(annonce);
       },
@@ -84,7 +84,7 @@ export class AnnonceFormComponent implements OnInit {
       const  nouvelId = Number(Math.floor(Math.random() * 10001));
 
       const annonceData: AnnonceCovoiturage = {
-        id: nouvelId.toString(),
+        id: String(nouvelId),
         depart: this.formAnnonce.value.depart,
         destination: this.formAnnonce.value.destination,
         date: this.formAnnonce.value.dateDepart,
@@ -104,13 +104,13 @@ export class AnnonceFormComponent implements OnInit {
       };
 
       const saveOrUpdate = this.annonceId ?
-        this.annonceService.mettreAJourAnnonce(this.annonceId, annonceData) :
+        this.annonceService.mettreAJourAnnonce(Number(this.annonceId), annonceData) :
         this.annonceService.sauvegarderAnnonce(annonceData);
 
       saveOrUpdate.subscribe(
         (annonce: AnnonceCovoiturage) => {
           console.log(this.annonceId ? 'Annonce mise à jour avec succès :' : 'Annonce créée avec succès :', annonce);
-          this.router.navigate(['/']);  // Navigate to /create page
+          this.router.navigate(['/annonces']);  // Navigate to /create page
                 if (!this.annonceId) {
             this.initForm();
             

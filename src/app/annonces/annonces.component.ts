@@ -44,7 +44,7 @@ export class AnnoncesComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         if (this.selectedAnnonce) {
-          const deletionObservables = this.selectedAnnonce.map(annonce => this.annonceService.supprimerAnnonce(annonce.id));
+          const deletionObservables = this.selectedAnnonce.map(annonce => this.annonceService.supprimerAnnonce(Number(annonce.id)));
           
           if (deletionObservables.length > 0) {
             forkJoin(deletionObservables).subscribe(() => {
@@ -66,6 +66,7 @@ export class AnnoncesComponent implements OnInit {
         }
       }
     });
+    
   }
   
   
@@ -82,54 +83,52 @@ export class AnnoncesComponent implements OnInit {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        const id = annonce.id; // Assuming "id" is the property that holds the unique identifier
+         // Convert the id from string to number
 
         // Call the service method for persistent deletion
-        this.annonceService.supprimerAnnonce(annonce.id).subscribe(
-          () => {
-            // Successful deletion
-            this.annonces = this.annonces.filter((val) => val.id !== id);
-            this.messageService.add({severity: 'success', summary: 'Succès', detail: 'annonce supprimé', life: 3000});
-          },
-          (error) => {
-            // Handle deletion error
-            this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d\'un annonce', life: 3000});
+            this.annonceService.supprimerAnnonce(parseInt(annonce.id)).subscribe(
+              () => {
+                // Successful deletion
+                this.annonces = this.annonces.filter((val) => Number(val.id )!== parseInt(annonce.id));
+
+                this.messageService.add({severity: 'success', summary: 'Succès', detail: 'annonce supprimé', life: 3000});
+              },
+              (error) => {
+                // Handle deletion error
+                this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d\'un annonce', life: 3000});
+              }
+            );
           }
-        );
-      }
-    });
+        });
+   
   }
 
-  getSeverity(status: string) {
-    switch (status) {
-      case 'EN_STOCK':
-        return 'success';
-      case 'ASSIGNED':
-        return 'warning';
-      case 'EN_REBUT':
-        return 'danger';
-      case 'EN_REPARATION':
-        return 'info';
-      default:
-        return 'secondary';
-    }
-  }
+  
 
   loadActifDetails(id: string) {
-    this.annonceService.recupererAnnonceParId(id).subscribe(
-      (data: AnnonceCovoiturage) => {
-        this.annonceDetails = data; // Assurez-vous que les données sont correctement attribuées à actifDetails
-        console.log('annonce Details:', this.annonceDetails); // Vérifiez les détails de l'annonce dans la console
-        this.actifDialog = true; // Afficher le dialogue des détails de l'annonce
-      },
-      (error) => {
-        console.error('Erreur lors du chargement des détails de l\'annonce :', error);
-      }
-    );
+    // Convert the id from string to number if needed
+    // ...
+  
+    this.annonceService.recupererAnnonceParId(Number(this.annonce.id))
+      .subscribe(
+        (data: AnnonceCovoiturage) => {
+          if (data) { // Check if data exists before assigning
+            this.annonceDetails = data;
+            console.log('annonce Details:', this.annonceDetails);
+            this.actifDialog = true;
+          } else {
+            console.error('Annonce not found or data is empty');
+          }
+        },
+        (error) => {
+          console.error('Erreur lors du chargement des détails de l\'annonce :', error);
+        }
+      );
   }
+  
 
   showActifDetails(annonce: AnnonceCovoiturage) {
-    this.loadActifDetails(annonce.id.toString());
+    this.loadActifDetails((annonce.id).toString());
   }
 
   hideActifDialog() {
