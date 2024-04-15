@@ -33,8 +33,12 @@
                     {{ annonce.placesDisponibles }}
                 </td>
                 <td>
-                  <p-button (click)="loadAnnonceDetails(annonce.id)" label="Voir les détails" severity="info"></p-button>
-                  <p-button (click)="supprimerAnnonce(annonce.id)" label="Supprimer" severity="danger"></p-button>
+                    <div class="button-container">
+                        <p-button (click)="loadAnnonceDetails(annonce.id)" label="Voir détails" severity="info"></p-button>
+                        <p-button (click)="supprimerAnnonce(annonce.id)" label="Supprimer" severity="danger"></p-button>
+                    </div>
+                    
+                    
                 </td>
             </tr>
         </ng-template>
