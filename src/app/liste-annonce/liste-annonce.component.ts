@@ -16,7 +16,7 @@ export class ListeAnnonceComponent  {
   searchKeyword: string = '';
   searchDate: string = '';
   date1!:Date;
-  date1: string = '';
+  
 
   constructor(private annonceService: AnnonceService) { }
   

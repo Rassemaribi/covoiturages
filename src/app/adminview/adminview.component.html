@@ -50,7 +50,7 @@
     </p-table>
   </div>
   
-  <p-dialog [(visible)]="annonceDialog" header="Détails de l'annonce" [modal]="true" [style]="{ width: '50rem' }" (onHide)="hideAnnonceDialog()">
+  <p-dialog [(visible)]="annonceDialog" header="Détails de l'annonce" [modal]="true" [style]="{ width: '60rem', height:'100rem' }" (onHide)="hideAnnonceDialog()">
     <div *ngIf="annonceDetails" class="dialog-content">
       <h1>{{ annonceDetails.depart }} - {{ annonceDetails.destination }}</h1>
       <p>Date: {{ annonceDetails.date | date }}</p>
@@ -62,7 +62,7 @@
       <p>Téléphone: {{ annonceDetails.conducteur.telephone }}</p>
       <p>Véhicule: {{ annonceDetails.conducteur.vehicule }}</p>
    
-      <h2>Exception</h2>
+      <h2>Options</h2>
       <p>Climatisation: {{ annonceDetails.conducteur.climatisation ? 'Oui' : 'Non' }}</p>
       <p>Bagage: {{ annonceDetails.conducteur.bagage }}</p>
       <p>Fumeur: {{ annonceDetails.conducteur.fumeur ? 'Oui' : 'Non' }}</p>

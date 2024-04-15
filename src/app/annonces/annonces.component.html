@@ -18,8 +18,9 @@
              [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 20]">
       <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-          <h5>Liste des annonces</h5>
+          <h5 class="m-0">Liste des annonces</h5>
           <span class="p-input-icon-left">
+              
             
             <input class="filtre" type="text" [(ngModel)]="searchKeyword" (input)="dt.filterGlobal(searchKeyword, 'contains')"
                    placeholder="Rechercher"/>
@@ -71,7 +72,7 @@
               <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2"
                       (click)="deleteAnnonce(annonce)"></button>
               <button pButton pRipple icon="pi pi-info-circle" class="p-button-rounded p-button-info mr-2"
-                      (click)="showActifDetails(annonce)"></button>
+                      (click)="showAnnonceDetails(annonce)"></button>
             </div>
           </td>
         </tr>
@@ -83,22 +84,31 @@
       </ng-template>
     </p-table>
   </div>
-  <p-dialog [(visible)]="actifDialog" header="Annonce Details" [modal]="true" [style]="{ width: '450px' }">
+  <p-dialog [(visible)]="annonceDialog" header="Détails de l'annonce" [modal]="true" [style]="{ width: '600px',height:'750px' }">
   
     <ng-template pTemplate="content">
       <div *ngIf="annonceDetails">
-        <p class="titre">Désignation:</p>
-        <p> {{ annonceDetails.conducteur }}</p>
-        <p class="titre">Garantie: </p>
-        <p>{{ annonceDetails.conducteur.climatisation}}p>
-        <p class="titre">C'est un actif partagé?:</p>
+        <p class="titre">Nom du conducteur:</p>
+        <p> {{ annonceDetails.conducteur.nom }}</p>
+        <p class="titre">Téléphone:</p>
+        <p>{{ annonceDetails.conducteur.telephone }}</p>
+        <p class="titre">Véhicule:</p>
+        <p>{{ annonceDetails.conducteur.vehicule }}</p>
+        <p class="titre">Prix:</p>
+        <p>{{ annonceDetails.conducteur.prix }}</p>
+        <p class="titre">Climatisation: </p>
+        <p>{{ annonceDetails.conducteur.climatisation}}</p>
+        <p class="titre">Bagage:</p>
         <p>{{ annonceDetails.conducteur.bagage }}</p>
-        <p class="titre">Commentaires:</p>
+        <p class="titre">Fumeur:</p>
         <p> {{ annonceDetails.conducteur.fumeur }}</p>
+        <p class="titre">Sexe:</p>
+        <p> {{ annonceDetails.conducteur.sexe}}</p>
+        
       </div>
     </ng-template>
     <ng-template pTemplate="footer">
-      <button pButton label="Close" (click)="hideActifDialog()"></button>
+      <button pButton label="Close" (click)="hideAnnonceDialog()"></button>
     </ng-template>
   </p-dialog>
   

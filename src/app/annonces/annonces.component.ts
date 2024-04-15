@@ -11,7 +11,7 @@ import { AnnonceCovoiturage } from '../modele/annonce';
   providers: [MessageService, ConfirmationService] 
 })
 export class AnnoncesComponent implements OnInit {
-  actifDialog: boolean = false;
+  annonceDialog: boolean = false;
   annonces!: AnnonceCovoiturage[];
   annonce!: AnnonceCovoiturage;
   selectedAnnonce!: AnnonceCovoiturage[] | null;
@@ -51,18 +51,18 @@ export class AnnoncesComponent implements OnInit {
               // All deletions successful
               this.ngOnInit(); // Refresh actives after deletion
               this.selectedAnnonce = [];
-              this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Actifs Supprimés avec succès'});
+              this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Annonces Supprimés avec succès'});
             }, (error) => {
               // Handle any errors during deletion
-              this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression des actifs'});
+              this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression des annonces'});
             });
           } else {
             // Handle case where no deletion observables are generated
-            this.messageService.add({severity: 'warn', summary: 'Attention', detail: 'Aucun actif sélectionné à supprimer'});
+            this.messageService.add({severity: 'warn', summary: 'Attention', detail: 'Aucune annonce sélectionnée à supprimer'});
           }
         } else {
           // Handle case where this.selectedAnnonce is undefined
-          this.messageService.add({severity: 'warn', summary: 'Attention', detail: 'Aucun actif sélectionné à supprimer'});
+          this.messageService.add({severity: 'warn', summary: 'Attention', detail: 'Aucune annonce sélectionnée à supprimer'});
         }
       }
     });
@@ -74,7 +74,7 @@ export class AnnoncesComponent implements OnInit {
 
   editAnnonce(annonce: AnnonceCovoiturage) {
     this.annonce = {...annonce};
-    this.actifDialog = true;
+    this.annonceDialog = true;
   }
 
   deleteAnnonce(annonce: AnnonceCovoiturage) {
@@ -95,7 +95,7 @@ export class AnnoncesComponent implements OnInit {
               },
               (error) => {
                 // Handle deletion error
-                this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d\'un annonce', life: 3000});
+                this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d\'une annonce', life: 3000});
               }
             );
           }
@@ -105,34 +105,29 @@ export class AnnoncesComponent implements OnInit {
 
   
 
-  loadActifDetails(id: string) {
-    // Convert the id from string to number if needed
-    // ...
-  
-    this.annonceService.recupererAnnonceParId(Number(this.annonce.id))
-      .subscribe(
-        (data: AnnonceCovoiturage) => {
-          if (data) { // Check if data exists before assigning
-            this.annonceDetails = data;
-            console.log('annonce Details:', this.annonceDetails);
-            this.actifDialog = true;
-          } else {
-            console.error('Annonce not found or data is empty');
-          }
-        },
-        (error) => {
-          console.error('Erreur lors du chargement des détails de l\'annonce :', error);
-        }
-      );
-  }
+ 
   
 
-  showActifDetails(annonce: AnnonceCovoiturage) {
-    this.loadActifDetails((annonce.id).toString());
+  showAnnonceDetails(annonce: AnnonceCovoiturage) {
+    this.loadAnnonceDetails(annonce.id);
   }
 
-  hideActifDialog() {
-    this.actifDialog = false;
+  loadAnnonceDetails(id: string) {
+    const idNumber = parseInt(id); // Convert the id from string to number
+    this.annonceService.recupererAnnonceParId(idNumber).subscribe(
+      (data: AnnonceCovoiturage) => {
+        this.annonceDetails = data;
+        console.log('Annonce Details:', this.annonceDetails);
+        this.annonceDialog = true;
+      },
+      (error: any) => {
+        console.error('Erreur lors du chargement des détails de l\'annonce :', error);
+      }
+    );
+  }
+
+  hideAnnonceDialog() {
+    this.annonceDialog = false;
   }
 
 }

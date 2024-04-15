@@ -82,7 +82,7 @@ export class AnnonceFormComponent implements OnInit {
       const nouvelId = uuidv4();
 
       const annonceData: AnnonceCovoiturage = {
-        id: nouvelId,
+        
         id: String(nouvelId),
         depart: this.formAnnonce.value.depart,
         destination: this.formAnnonce.value.destination,
