@@ -110,7 +110,7 @@ export class AnnonceFormComponent implements OnInit {
       saveOrUpdate.subscribe(
         (annonce: AnnonceCovoiturage) => {
           console.log(this.annonceId ? 'Annonce mise à jour avec succès :' : 'Annonce créée avec succès :', annonce);
-          this.router.navigate(['/']);  // Navigate to /create page
+          this.router.navigate(['/home']);  // Navigate to /create page
                 if (!this.annonceId) {
             this.initForm();
             
