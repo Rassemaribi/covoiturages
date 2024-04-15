@@ -39,7 +39,7 @@ export class ListeAnnonceComponent  {
       annonce.placesDisponibles--; // Decrement available places
   
       // Call an API endpoint or service to update the annonce on the server
-      this.annonceService.mettreAJourAnnonce(Number(annonce.id), annonce)
+      this.annonceService.mettreAJourAnnonce(annonce.id, annonce)
         .subscribe(response => {
           // Handle successful update (optional: show confirmation message)
         }, error => {

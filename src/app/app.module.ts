@@ -24,6 +24,11 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { HomeComponent } from './home/home.component';
 import { AdminviewComponent } from './adminview/adminview.component';
+import { AnnoncesComponent } from './annonces/annonces.component';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ToastModule} from 'primeng/toast';
+import {DialogModule} from 'primeng/dialog';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 
@@ -36,6 +41,7 @@ import { AdminviewComponent } from './adminview/adminview.component';
     ListeAnnonceComponent,
     HomeComponent,
     AdminviewComponent,
+    AnnoncesComponent,
 
 
 
@@ -58,7 +64,11 @@ import { AdminviewComponent } from './adminview/adminview.component';
     MatToolbarModule,
     TableModule,
     FormsModule,
-    CalendarModule
+    CalendarModule,
+    ToolbarModule,
+    ToastModule,
+    DialogModule,
+    ConfirmDialogModule
     
     
 

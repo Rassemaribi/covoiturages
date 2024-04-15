@@ -4,6 +4,7 @@ import { AnnonceFormComponent } from './annonce-form/annonce-form.component';
 import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
 import { HomeComponent } from './home/home.component';
 import { AdminviewComponent } from './adminview/adminview.component';
+import { AnnoncesComponent } from './annonces/annonces.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'adminview',
     pathMatch: 'full',
     component:AdminviewComponent
+  },
+  {
+    path: 'annonces',
+    pathMatch: 'full',
+    component:AnnoncesComponent
   },
 ];
 

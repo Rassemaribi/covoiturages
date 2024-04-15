@@ -50,7 +50,7 @@ export class AnnonceFormComponent implements OnInit {
   }
 
   loadAnnonce(): void {
-    this.annonceService.recupererAnnonceParId(Number(this.annonceId!)).subscribe(
+    this.annonceService.recupererAnnonceParId(this.annonceId!).subscribe(
       (annonce: AnnonceCovoiturage) => {
         this.initForm(annonce);
       },
@@ -104,7 +104,7 @@ export class AnnonceFormComponent implements OnInit {
       };
 
       const saveOrUpdate = this.annonceId ?
-        this.annonceService.mettreAJourAnnonce(Number(this.annonceId), annonceData) :
+        this.annonceService.mettreAJourAnnonce(this.annonceId, annonceData) :
         this.annonceService.sauvegarderAnnonce(annonceData);
 
       saveOrUpdate.subscribe(

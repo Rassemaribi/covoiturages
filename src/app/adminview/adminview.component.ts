@@ -38,12 +38,12 @@ export class AdminviewComponent implements OnInit {
     );
   }
 
-  supprimerAnnonce(id: number): void {
+  supprimerAnnonce(id: string): void {
     this.loading = true; // Indiquer que la suppression est en cours
     this.annonceService.supprimerAnnonce(id).subscribe(
       () => {
         // Supprimer l'annonce de la liste des annonces
-        this.annonces = this.annonces.filter(annonce => parseInt(annonce.id) !== id);
+        this.annonces = this.annonces.filter(annonce => (annonce.id) !== id);
         this.loading = false; // Indiquer que la suppression est terminée
         this.ngOnInit();
       },

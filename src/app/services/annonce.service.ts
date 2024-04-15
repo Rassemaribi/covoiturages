@@ -21,15 +21,15 @@ export class AnnonceService {
     return this.httpClient.get<AnnonceCovoiturage[]>('http://localhost:3000/annoncesCovoiturage');
   }
 
-  supprimerAnnonce(id: number): Observable<any> {
+  supprimerAnnonce(id: string): Observable<any> {
     return this.httpClient.delete(`http://localhost:3000/annoncesCovoiturage/${id}`);
   }
 
-  mettreAJourAnnonce(id: number, nouvelleAnnonce: AnnonceCovoiturage): Observable<AnnonceCovoiturage> {
+  mettreAJourAnnonce(id: string, nouvelleAnnonce: AnnonceCovoiturage): Observable<AnnonceCovoiturage> {
     return this.httpClient.put<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`, nouvelleAnnonce);
   }
 
-  recupererAnnonceParId(id: number): Observable<AnnonceCovoiturage> {
+  recupererAnnonceParId(id: string): Observable<AnnonceCovoiturage> {
     return this.httpClient.get<AnnonceCovoiturage>(`http://localhost:3000/annoncesCovoiturage/${id}`);
   
   }

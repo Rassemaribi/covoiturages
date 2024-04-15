@@ -1,25 +1,6 @@
 {
   "annoncesCovoiturage": [
     {
-      "id": "0",
-      "depart": "djerba",
-      "destination": "sfax",
-      "date": "2024-04-19T23:00:00.000Z",
-      "heureDepart": "13:00",
-      "placesDisponibles": 2,
-      "conducteur": {
-        "nom": "Sophie Leclerc",
-        "telephone": "+33 6 23 45 67 89",
-        "vehicule": "Peugeot 308",
-        "prix": 70,
-        "climatisation": "non",
-        "bagage": "auto",
-        "fumeur": "non",
-        "sexe": "femme"
-      },
-      "passagers": []
-    },
-    {
       "id": null,
       "depart": "sousse",
       "destination": "gabes",
@@ -34,25 +15,6 @@
         "climatisation": "oui",
         "bagage": "auto",
         "fumeur": "oui",
-        "sexe": "femme"
-      },
-      "passagers": []
-    },
-    {
-      "id": "3723",
-      "depart": "sousse",
-      "destination": "gabes",
-      "date": "2024-04-11T23:00:00.000Z",
-      "heureDepart": "20:00",
-      "placesDisponibles": 2,
-      "conducteur": {
-        "nom": "amir",
-        "telephone": "47125647",
-        "vehicule": "mercedes",
-        "prix": 41,
-        "climatisation": "non",
-        "bagage": "auto",
-        "fumeur": "non",
         "sexe": "femme"
       },
       "passagers": []
@@ -82,11 +44,7 @@
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "20:00",
-<<<<<<< Updated upstream
-      "placesDisponibles": 1,
-=======
-      "placesDisponibles": 0,
->>>>>>> Stashed changes
+      "placesDisponibles": "1",
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
