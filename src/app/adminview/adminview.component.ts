@@ -5,7 +5,7 @@ import { AnnonceService } from '../services/annonce.service';
 @Component({
   selector: 'app-adminview',
   templateUrl: './adminview.component.html',
-  styleUrls: ['./adminview.component.scss'] // Correction de la propriété 'styleUrl'
+  styleUrls: ['./adminview.component.scss']
 })
 export class AdminviewComponent implements OnInit {
 
@@ -21,68 +21,55 @@ export class AdminviewComponent implements OnInit {
   constructor(private annonceService: AnnonceService) { }
 
   ngOnInit(): void {
-    this.loadAnnonces(); // Appel de la méthode pour charger les annonces lors de l'initialisation du composant
+    this.loadAnnonces();
   }
 
   loadAnnonces(): void {
-    this.loading = true; // Indiquer que le chargement est en cours
+    this.loading = true;
     this.annonceService.recupererAnnonces().subscribe(
       (annonces: AnnonceCovoiturage[]) => {
         this.annonces = annonces;
-        this.loading = false; // Indiquer que le chargement est terminé
+        this.loading = false;
       },
       (error) => {
         console.error('Erreur lors du chargement des annonces : ', error);
-        this.loading = false; // Indiquer que le chargement est terminé, même en cas d'erreur
+        this.loading = false;
       }
     );
   }
 
-  supprimerAnnonce(id: string): void {
-    this.loading = true; // Indiquer que la suppression est en cours
+  supprimerAnnonce(id: string): void { // Change parameter type to string
+    this.loading = true;
     this.annonceService.supprimerAnnonce(id).subscribe(
       () => {
-        // Supprimer l'annonce de la liste des annonces
-        this.annonces = this.annonces.filter(annonce => (annonce.id) !== id);
-        this.loading = false; // Indiquer que la suppression est terminée
+        this.annonces = this.annonces.filter(annonce => annonce.id !== id);
+        this.loading = false;
         this.ngOnInit();
       },
       (error) => {
         console.error('Erreur lors de la suppression de l\'annonce : ', error);
-        this.loading = false; // Indiquer que la suppression est terminée, même en cas d'erreur
+        this.loading = false;
       }
     );
   }
-  annonceDetails!: AnnonceCovoiturage; // Define annonceDetails
-annonceDialog: boolean = false; // Define annonceDialog
 
-loadAnnonceDetails(id: string) {
-<<<<<<< Updated upstream
-  this.annonceService.recupererAnnonceParId(id.toString()).subscribe(
-=======
-  this.annonceService.recupererAnnonceParId(Number(id)).subscribe(
->>>>>>> Stashed changes
-    (data: AnnonceCovoiturage) => {
-      this.annonceDetails = data; // Assuming the service returns a single object
-      console.log('Annonce Details:', this.annonceDetails);
-      this.annonceDialog = true;
-    },
-    (error: any) => {
-      console.error('Erreur lors du chargement des détails de l\'annonce :', error);
-    }
-  );
-<<<<<<< Updated upstream
-}
+  annonceDetails!: AnnonceCovoiturage;
+  annonceDialog: boolean = false;
 
-hideAnnonceDialog() {
-  this.annonceDialog = false;
-}
-=======
->>>>>>> Stashed changes
-}
+  loadAnnonceDetails(id: string) {
+    this.annonceService.recupererAnnonceParId(id).subscribe(
+      (data: AnnonceCovoiturage) => {
+        this.annonceDetails = data;
+        console.log('Annonce Details:', this.annonceDetails);
+        this.annonceDialog = true;
+      },
+      (error: any) => {
+        console.error('Erreur lors du chargement des détails de l\'annonce :', error);
+      }
+    );
+  }
 
-hideAnnonceDialog() {
-  this.annonceDialog = false;
-}
-
+  hideAnnonceDialog() {
+    this.annonceDialog = false;
+  }
 }
