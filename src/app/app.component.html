@@ -1,35 +1,34 @@
-
-<div *ngIf="!isLoggedIn" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('assets/car_sharing.png'); background-size: cover;">
-  <router-outlet ></router-outlet>
-  <p-toast></p-toast>
-</div>
-
-<mat-sidenav-container *ngIf="isLoggedIn" class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav" mode="side" opened>
-    <h1>Menu</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/home">
-        <mat-icon>home</mat-icon> <!-- Icon -->
-        <span>Home</span>
-
-      </a>
-      <mat-divider></mat-divider> <!-- Separator -->
-      <a mat-list-item routerLink="/create">
-        <mat-icon>add_circle</mat-icon> <!-- Icon -->
-        <span>Ajouter Annonce</span>
-
-      </a>
-      <mat-divider></mat-divider> <!-- Separator -->
-      <a mat-list-item routerLink="/liste-annonce">
-        <mat-icon>search</mat-icon> <!-- Icon -->
-        <span>Rechercher Annonce</span>
-
-      </a>
-      <mat-divider></mat-divider> <!-- Separator -->
+<mat-sidenav-container class="sidenav-container">
+  <div class="welcome-message">Bienvenue dans notre site web </div>
+    <mat-sidenav #sidenav class="sidenav" mode="side" opened>
+      <br>
+      <br>
+    
+      
+        <h1>Menu</h1>
+        <br>
+        <br>
+        <br>
+        
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">
+          <mat-icon>home</mat-icon> 
+          <span>Home</span>
+         
+        </a>
+        <mat-divider></mat-divider> 
+        <a mat-list-item routerLink="/create">
+          <mat-icon>add_circle</mat-icon> 
+          <span>Ajouter Annonce</span> 
+         
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/liste-annonce">
+          <mat-icon>search</mat-icon>
+          <span>Rechercher Annonce</span>
+        
+        </a>
+      <mat-divider></mat-divider> 
       <a mat-list-item routerLink="/adminview">
         <mat-icon>dashboard</mat-icon> 
         <span>Admin View</span>
