@@ -29,6 +29,11 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
+    path: '',
+    pathMatch: 'full',
+    component:HomeComponent
+  },
+  {
     path: 'adminview',
     pathMatch: 'full',
     component:AdminviewComponent
@@ -38,6 +43,10 @@ const routes: Routes = [
     pathMatch: 'full',
     component:AnnoncesComponent
   },
+  {
+    path:'**',
+    redirectTo:'home'
+  }
 ];
 
 @NgModule({
