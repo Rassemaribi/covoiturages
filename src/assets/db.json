@@ -11,31 +11,12 @@
   ],
   "annoncesCovoiturage": [
     {
-      "id": "6433",
-      "depart": ".6.66.6",
-      "destination": "6.6.6",
-      "date": "2024-04-11T23:00:00.000Z",
-      "heureDepart": "06:36",
-      "placesDisponibles": 1,
-      "conducteur": {
-        "nom": "vbnbr",
-        "telephone": "6.666.6.6.6",
-        "vehicule": "gby(b",
-        "prix": 55,
-        "climatisation": "oui",
-        "bagage": "auto",
-        "fumeur": "non",
-        "sexe": "Peu importe"
-      },
-      "passagers": []
-    },
-    {
       "id": "7369",
       "depart": "SFAX",
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "20:00",
-      "placesDisponibles": 1,
+      "placesDisponibles": 0,
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
@@ -46,7 +27,13 @@
         "fumeur": "oui",
         "sexe": "homme"
       },
-      "passagers": []
+      "passagers": [
+        {
+          "nom": "John Doe",
+          "telephone": "123-456-7890",
+          "sexe": "Male"
+        }
+      ]
     },
     {
       "id": "6024",
@@ -54,7 +41,7 @@
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "14:00",
-      "placesDisponibles": 3,
+      "placesDisponibles": 0,
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
@@ -65,7 +52,13 @@
         "fumeur": "non",
         "sexe": "Peu importe"
       },
-      "passagers": []
+      "passagers": [
+        {
+          "nom": "John Doe",
+          "telephone": "123-456-7890",
+          "sexe": "Male"
+        }
+      ]
     },
     {
       "id": "8277",

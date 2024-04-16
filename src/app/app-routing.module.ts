@@ -48,6 +48,11 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: '',
+    pathMatch: 'full',
+    component:HomeComponent
+  },
+  {
     path: 'adminview',
     pathMatch: 'full',
     component:AdminviewComponent,
@@ -59,6 +64,10 @@ const routes: Routes = [
     component:AnnoncesComponent,
     canActivate: [authGuard]
   },
+  {
+    path:'**',
+    redirectTo:'home'
+  }
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
 <div class="multi-search-bar-container">
     <span class="spaced-search-bar p-input-icon-left">
         <input class="input-field" type="text" [(ngModel)]="searchTerm1" placeholder="Départ">
@@ -7,7 +7,7 @@
         <input class="input-field" pInputText class="p-inputtext-lg" type="text" [(ngModel)]="searchTerm2" placeholder="Destination">
     </div>
     <div class="search-bar">
-      <p-calendar class="input-field" [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay"></p-calendar>
+      <p-calendar class="input-field"[(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay"></p-calendar>
     </div>
     <button (click)="onSearch()">Rechercher</button>
   </div>
@@ -30,7 +30,7 @@
           </tr>
           
       </ng-template>
-      <ng-template pTemplate="body" let-annonce>
+      <ng-template pTemplate="body" let-annonce >
           <tr>
               <td>
                   {{ annonce.depart }}
@@ -45,11 +45,12 @@
               <td>
                   {{ annonce.heureDepart }}
               </td>
-              <td>
-                  {{ annonce.placesDisponibles }}
+              <td
+                [ngClass]="{'outofstock': annonce.placesDisponibles === 0,'instock': annonce.placesDisponibles> 0}">
+                {{annonce.placesDisponibles}}
               </td>
               <td>
-                <button (click)="reserver(annonce)">Réserver</button>
+                <button  (click)="reserver(annonce)" >Réserver</button>
 
               </td>
           </tr>

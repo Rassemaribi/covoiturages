@@ -36,6 +36,8 @@ import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from "primeng/button";
+import { TabMenuModule } from 'primeng/tabmenu';
+import { BadgeModule } from 'primeng/badge';
 
 
 
@@ -83,7 +85,11 @@ import {ButtonModule} from "primeng/button";
     ConfirmDialogModule,
     CardModule,
     InputTextModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TabMenuModule,
+    BadgeModule
+    
+    
 
 
   ],
