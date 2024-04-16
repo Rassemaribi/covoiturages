@@ -29,8 +29,8 @@ export class AnnonceFormComponent implements OnInit {
       nomConducteur: ['', Validators.required],
       telephoneConducteur: ['', Validators.required],
       vehiculeConducteur: ['', Validators.required],
-      prix: ['', Validators.required],
-      bagage: ['', Validators.required],
+      prix: [''],
+      bagage: [''],
       fumeur: [false],
       climatisation: [false],
       sexe: ['Peu importe']

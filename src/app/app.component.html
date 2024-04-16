@@ -39,9 +39,13 @@
     </mat-sidenav>
   
     <mat-toolbar>
-      <a href="#" (click)="sidenav.toggle(); $event.preventDefault()">
-        <mat-icon>menu</mat-icon>
-      </a>
+      <mat-toolbar-row>
+        <a href="#" (click)="sidenav.toggle(); $event.preventDefault()">
+          <mat-icon>menu</mat-icon>
+        </a>
+        <span class="spacer"></span>
+        <h1>Covoiturage</h1>
+      </mat-toolbar-row>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-container>
