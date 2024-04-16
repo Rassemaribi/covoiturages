@@ -19,6 +19,8 @@ export class ListeAnnonceComponent  {
   searchDate: string = '';
   date1!:Date;
   placesDisponibles:any;
+  annonceDetails!: AnnonceCovoiturage;
+  annonceDialog: boolean = false;
   
   
 
@@ -70,5 +72,28 @@ export class ListeAnnonceComponent  {
     }
   }
   
+
+  showAnnonceDetails(annonce: AnnonceCovoiturage) {
+    this.loadAnnonceDetails(annonce.id);
+  }
+
+  loadAnnonceDetails(id: string) {
+    const idNumber = parseInt(id); // Convert the id from string to number
+    this.annonceService.recupererAnnonceParId(idNumber).subscribe(
+      (data: AnnonceCovoiturage) => {
+        this.annonceDetails = data;
+        console.log('Annonce Details:', this.annonceDetails);
+        this.annonceDialog = true;
+      },
+      (error: any) => {
+        console.error('Erreur lors du chargement des détails de l\'annonce :', error);
+      }
+    );
+  }
+
+  hideAnnonceDialog() {
+    this.annonceDialog = false;
+  }
+
   
 }

@@ -7,14 +7,6 @@
       "password": "12345678",
       "city": "Sfax",
       "phoneNumber": "598198298"
-    },
-    {
-      "id": "7774",
-      "fullName": "habaib ahmed",
-      "email": "ahmedhabaib1@gmail.com",
-      "password": "123456789",
-      "city": "sfax",
-      "phoneNumber": "25287750"
     }
   ],
   "annoncesCovoiturage": [
