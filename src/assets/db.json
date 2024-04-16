@@ -1,4 +1,14 @@
 {
+  "users": [
+    {
+      "id": "8996",
+      "fullName": "Karim Jalleli",
+      "email": "karimj@gmail.com",
+      "password": "12345678",
+      "city": "Sfax",
+      "phoneNumber": "598198298"
+    }
+  ],
   "annoncesCovoiturage": [
     {
       "id": "6433",
