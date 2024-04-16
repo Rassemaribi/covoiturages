@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
 <div class="multi-search-bar-container">
     <span class="spaced-search-bar p-input-icon-left">
         <input class="input-field" type="text" [(ngModel)]="searchTerm1" placeholder="Départ">
@@ -30,7 +30,7 @@
           </tr>
           
       </ng-template>
-      <ng-template pTemplate="body" let-annonce>
+      <ng-template pTemplate="body" let-annonce >
           <tr>
               <td>
                   {{ annonce.depart }}
@@ -45,11 +45,12 @@
               <td>
                   {{ annonce.heureDepart }}
               </td>
-              <td>
-                  {{ annonce.placesDisponibles }}
+              <td
+                [ngClass]="{'outofstock': annonce.placesDisponibles === 0,'instock': annonce.placesDisponibles> 0}">
+                {{annonce.placesDisponibles}}
               </td>
               <td>
-                <button (click)="reserver(annonce)">Réserver</button>
+                <button  (click)="reserver(annonce)" >Réserver</button>
 
               </td>
           </tr>
