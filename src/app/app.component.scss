@@ -2,13 +2,14 @@
     height: 100%;
     .sidenav {
       width: 250px;
-      background-color: #B6D8F2; // Indigo
+      background-color: #A9CEF4; // Indigo
       color: #fff;
       h1 {
         text-align:center;
-        font-size: 24px; // Increase font size
+        font-size: 30px; // Increase font size
         margin: 20px 0; // Add vertical margin
-        color: rgb(39, 83, 196);
+        color: black;
+        font-style: bold;
       }
       mat-nav-list {
         width: 100%;
@@ -38,7 +39,7 @@
       }
     }
     .mat-toolbar {
-      background-color: #B6D8F2;
+      background-color: #A9CEF4;
     }
   }
   mat-icon{

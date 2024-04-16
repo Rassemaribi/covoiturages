@@ -8,7 +8,7 @@ prix: any;
   id: string; 
   depart: string; 
   destination: string; 
-  date: Date; 
+  date: string; 
   heureDepart: string;
   placesDisponibles: number; 
   conducteur: Conducteur;

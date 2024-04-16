@@ -4,6 +4,18 @@
              currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} annonces"
              [globalFilterFields]="['depart', 'destination', 'date', 'heureDepart', 'placesDisponibles']"
              [tableStyle]="{ 'min-width': '75rem' }">
+             <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between">
+                  <h5 class="titre">Liste des annonces</h5>
+                  <span class="p-input-icon-left">
+                      
+                   
+                    <input class="filtre" type="text" [(ngModel)]="searchKeyword" (input)="dt.filterGlobal(searchKeyword, 'contains')"
+                           placeholder="Rechercher"/>
+          
+                  </span>
+                </div>
+              </ng-template>
         
         <ng-template pTemplate="header">
             <tr>

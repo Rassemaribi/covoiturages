@@ -21,7 +21,7 @@
           <h5 class="m-0">Liste des annonces</h5>
           <span class="p-input-icon-left">
               
-            
+           
             <input class="filtre" type="text" [(ngModel)]="searchKeyword" (input)="dt.filterGlobal(searchKeyword, 'contains')"
                    placeholder="Rechercher"/>
   
@@ -42,8 +42,8 @@
           <th pSortableColumn="date" style="min-width:15rem">Date
             <p-sortIcon field="date"></p-sortIcon>
           </th>
-          <th pSortableColumn="Heure" style="min-width:15rem">Heure de départ
-            <p-sortIcon field="Heure"></p-sortIcon>
+          <th pSortableColumn="heureDepart" style="min-width:15rem">Heure de départ
+            <p-sortIcon field="heureDepart"></p-sortIcon>
           </th>
           <th pSortableColumn="placesDisponibles" style="min-width:15rem">Places Disponibles
             <p-sortIcon field="placesDisponibles"></p-sortIcon>

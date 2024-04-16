@@ -29,6 +29,8 @@ import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { BadgeModule } from 'primeng/badge';
 
 
 
@@ -68,7 +70,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     DialogModule,
     ToolbarModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TabMenuModule,
+    BadgeModule
     
     
 
