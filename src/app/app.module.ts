@@ -29,6 +29,13 @@ import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {MessageService} from "primeng/api";
+import {CardModule} from "primeng/card";
+import {InputTextModule} from "primeng/inputtext";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ButtonModule} from "primeng/button";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { BadgeModule } from 'primeng/badge';
 
@@ -44,6 +51,8 @@ import { BadgeModule } from 'primeng/badge';
     HomeComponent,
     AdminviewComponent,
     AnnoncesComponent,
+    LoginComponent,
+    RegisterComponent,
 
 
 
@@ -51,9 +60,12 @@ import { BadgeModule } from 'primeng/badge';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ButtonModule,
+    CardModule,
+    AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule ,
+    HttpClientModule,
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
@@ -71,6 +83,9 @@ import { BadgeModule } from 'primeng/badge';
     ToolbarModule,
     ToastModule,
     ConfirmDialogModule,
+    CardModule,
+    InputTextModule,
+    BrowserAnimationsModule,
     TabMenuModule,
     BadgeModule
     
@@ -80,6 +95,7 @@ import { BadgeModule } from 'primeng/badge';
   ],
 
   providers: [
+    MessageService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

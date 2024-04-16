@@ -5,28 +5,47 @@ import { ListeAnnonceComponent } from './liste-annonce/liste-annonce.component';
 import { HomeComponent } from './home/home.component';
 import { AdminviewComponent } from './adminview/adminview.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
+import {authGuard} from "./guards/auth.guard";
 
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
     path:':id/edit',
     pathMatch:'full',
-    component:AnnonceFormComponent
+    component:AnnonceFormComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'create',
     pathMatch: 'full',
-    component:AnnonceFormComponent
+    component:AnnonceFormComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'liste-annonce',
     pathMatch: 'full',
-    component:ListeAnnonceComponent
+    component:ListeAnnonceComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'home',
     pathMatch: 'full',
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate: [authGuard]
   },
   {
     path: '',
@@ -36,12 +55,14 @@ const routes: Routes = [
   {
     path: 'adminview',
     pathMatch: 'full',
-    component:AdminviewComponent
+    component:AdminviewComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'annonces',
     pathMatch: 'full',
-    component:AnnoncesComponent
+    component:AnnoncesComponent,
+    canActivate: [authGuard]
   },
   {
     path:'**',
