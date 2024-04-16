@@ -51,11 +51,20 @@
     font-size:medium;
   }
   .spacer {
-    display: flex;
-    justify-content: flex-end;
-    padding-left: 1150px;
+    margin-left: 1170px;
+   
   }
   h1{
     color: rgb(39, 83, 196);
   }
- 
+  .welcome-message {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the message is above other elements */
+    text-align: center;
+    font-size:xx-large ;
+    color: #f3f2f2;
+    font-family: 'Courier New', Courier, monospace;
+  }

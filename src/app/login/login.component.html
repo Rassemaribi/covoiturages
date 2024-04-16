@@ -1,3 +1,4 @@
+<mat-drawer-container>
 <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
   <p-card header="Se connecter" [style]="{ width: '360px' }">
     <div class="field">
@@ -36,7 +37,7 @@
       </small>
     </div>
     <p-button
-      label="Se connecter"
+      label="SIGN IN"
       styleClass="w-full"
       [disabled]="loginForm.invalid"
       type="submit"
@@ -44,3 +45,4 @@
     <div class="mt-2">Vous n'etes pas membre? <a routerLink="/register">S'inscrire</a></div>
   </p-card>
 </form>
+</mat-drawer-container>
