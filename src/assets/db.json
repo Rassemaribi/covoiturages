@@ -7,7 +7,6 @@
       "password": "12345678",
       "city": "Sfax",
       "phoneNumber": "598198298"
-<<<<<<< HEAD
     },
     {
       "id": "8da2",
@@ -16,8 +15,6 @@
       "password": "123456",
       "city": "sfax",
       "phoneNumber": "25287750"
-=======
->>>>>>> 51e63481c67b8c9b3289d1881d97d75f3ee1f747
     }
   ],
   "annoncesCovoiturage": [
@@ -77,7 +74,7 @@
       "destination": "TUNIS",
       "date": "2024-04-12T23:00:00.000Z",
       "heureDepart": "03:00",
-      "placesDisponibles": 3,
+      "placesDisponibles": 1,
       "conducteur": {
         "nom": "AHMED",
         "telephone": "26091862",
