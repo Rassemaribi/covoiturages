@@ -51,6 +51,7 @@
     <a href="#" (click)="sidenav.toggle(); $event.preventDefault()">
       <mat-icon>menu</mat-icon>
     </a>
+    <span class="username" *ngIf="isLoggedIn">{{fullName}}</span>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </mat-sidenav-container>

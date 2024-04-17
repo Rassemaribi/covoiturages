@@ -7,3 +7,12 @@
 input {
   margin-top: 5px;
 }
+mat-drawer-container{ /* Replace 'body' with the selector for your form's parent container if it's not the body */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh; /* This makes sure the body takes up the full viewport height */
+  padding-top: 10%; /* This positions the form 20% from the top */
+  margin: 0;
+  box-sizing: border-box;
+}

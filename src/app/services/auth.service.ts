@@ -10,6 +10,7 @@ export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(this.isUserLoggedIn());
 
   private baseUrl = 'http://localhost:3000';
+  currentUser: any;
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
